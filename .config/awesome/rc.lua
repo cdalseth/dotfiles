@@ -18,6 +18,9 @@ require("awful.hotkeys_popup.keys")
 
 local beautiful = require("beautiful")
 
+-- awesome widgets
+local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
+
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
@@ -231,6 +234,7 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
+	    volume_widget(),
             mytextclock,
             s.mylayoutbox,
         },
@@ -257,6 +261,11 @@ globalkeys = gears.table.join(
               {description = "view next", group = "tag"}),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
+
+    -- Awesome widgets
+    awful.key({ modkey }, "]", function() volume_widget:inc(5) end),
+    awful.key({ modkey }, "[", function() volume_widget:dec(5) end),
+    awful.key({ modkey }, "\\", function() volume_widget:toggle() end),
 
     awful.key({ modkey,           }, "j",
         function ()
