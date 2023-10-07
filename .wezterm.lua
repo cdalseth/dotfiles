@@ -13,6 +13,7 @@ end
 -- This is where you actually apply your config choices
 config.color_scheme = 'AlienBlood'
 config.window_background_opacity = 0.95
+config.font = wezterm.font "MesloLGS Nerd Font"
 
 -- and finally, return the configuration to wezterm
 return config
