@@ -15,5 +15,8 @@ config.color_scheme = 'AlienBlood'
 config.window_background_opacity = 0.95
 config.font = wezterm.font "MesloLGS Nerd Font"
 
+-- silence the update notification
+config.show_update_window = false
+
 -- and finally, return the configuration to wezterm
 return config
